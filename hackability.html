@@ -510,123 +510,46 @@
   <section id="programs" class="py-16 md:py-24 bg-grey-light scroll-mt-24 relative overflow-hidden border-t border-hk-border">
     <div class="max-w-7xl mx-auto px-6">
       
-      <!-- Programs Offered Marquee -->
-      <div class="mb-20 pt-8 overflow-hidden">
+      <!-- Programs Offered Pill Cluster -->
+      <div class="mb-20">
         <div class="text-center mb-10">
-          <h2 class="font-display font-bold text-navy text-3xl md:text-4xl">Programs Offered</h2>
+          <h2 class="font-display font-bold text-navy text-3xl md:text-4xl mb-4">Programs Offered</h2>
+          <p class="text-grey-dark text-lg max-w-2xl mx-auto">A diverse range of training formats tailored for maximum impact.</p>
         </div>
         
-        <!-- Marquee Container -->
-        <div class="relative flex overflow-x-hidden w-full max-w-[100vw]">
-          <style>
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-              animation: marquee 25s linear infinite;
-            }
-            .marquee-hover:hover .animate-marquee {
-              animation-play-state: paused;
-            }
-          </style>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-5 max-w-4xl mx-auto px-4">
           
-          <div class="marquee-hover py-4 flex gap-6 md:gap-10 w-fit whitespace-nowrap">
-            <!-- Double the content for seamless loop -->
-            <div class="animate-marquee flex gap-6 md:gap-10 items-center">
-              
-              <!-- Item 1 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-chalkboard-teacher text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Workshops</span>
-              </div>
-              
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-              <!-- Item 2 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-rocket-launch text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Bootcamps</span>
-              </div>
-              
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-              <!-- Item 3 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-calendar-check text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">STTPs</span>
-              </div>
-              
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-              <!-- Item 4 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-users-four text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">FDPs</span>
-              </div>
-              
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-              <!-- Item 5 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-lightbulb-filament text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">IQAC & IIC</span>
-              </div>
-              
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-              <!-- Item 6 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-puzzle-piece text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Customized Programmes</span>
-              </div>
-
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-
-              <!-- DUPLICATE SET FOR SEAMLESS LOOP -->
-              <!-- Item 1 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-chalkboard-teacher text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Workshops</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              <!-- Item 2 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-rocket-launch text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Bootcamps</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              <!-- Item 3 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-calendar-check text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">STTPs</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              <!-- Item 4 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-users-four text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">FDPs</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              <!-- Item 5 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-lightbulb-filament text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">IQAC & IIC</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              <!-- Item 6 -->
-              <div class="flex items-center gap-3 group">
-                <i class="ph-fill ph-puzzle-piece text-yellow text-2xl group-hover:scale-125 transition-transform"></i>
-                <span class="font-display font-bold text-navy text-2xl md:text-3xl lg:text-4xl uppercase tracking-wider group-hover:text-blue-500 transition-colors cursor-default">Customized Programmes</span>
-              </div>
-              <div class="w-3 h-3 rounded-full bg-hk-border"></div>
-              
-            </div>
+          <div class="group flex items-center gap-3 px-6 py-3.5 bg-white border border-hk-border rounded-full shadow-sm hover:shadow-md hover:border-blue-500 hover:-translate-y-1 transition-all duration-300 cursor-default">
+            <i class="ph-bold ph-chalkboard-teacher text-blue-500 text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-navy text-lg">Workshops</span>
           </div>
           
-          <!-- Fade gradients for the edges -->
-          <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-grey-light to-transparent pointer-events-none z-10"></div>
-          <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-grey-light to-transparent pointer-events-none z-10"></div>
+          <div class="group flex items-center gap-3 px-6 py-3.5 bg-white border border-hk-border rounded-full shadow-sm hover:shadow-md hover:border-yellow text-navy hover:-translate-y-1 transition-all duration-300 cursor-default">
+            <i class="ph-bold ph-rocket-launch text-yellow-dark text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-navy text-lg">Bootcamps</span>
+          </div>
+          
+          <div class="group flex items-center gap-3 px-6 py-3.5 bg-white border border-hk-border rounded-full shadow-sm hover:shadow-md hover:border-blue-500 hover:-translate-y-1 transition-all duration-300 cursor-default">
+            <i class="ph-bold ph-calendar-check text-blue-500 text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-navy text-lg">STTPs</span>
+          </div>
+          
+          <div class="group flex items-center gap-3 px-6 py-3.5 bg-white border border-hk-border rounded-full shadow-sm hover:shadow-md hover:border-green-500 hover:-translate-y-1 transition-all duration-300 cursor-default">
+            <i class="ph-bold ph-users-four text-green-500 text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-navy text-lg">FDPs</span>
+          </div>
+          
+          <div class="group flex items-center gap-3 px-6 py-3.5 bg-white border border-hk-border rounded-full shadow-sm hover:shadow-md hover:border-purple-500 hover:-translate-y-1 transition-all duration-300 cursor-default">
+            <i class="ph-bold ph-lightbulb-filament text-purple-500 text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-navy text-lg">IQAC & IIC Activities</span>
+          </div>
+          
+          <!-- Highlighted Pill for Customized Programs -->
+          <div class="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default border border-blue-400">
+            <i class="ph-bold ph-puzzle-piece text-white text-xl group-hover:scale-110 transition-transform"></i>
+            <span class="font-display font-bold text-white text-lg">Customized Institutional Programme</span>
+          </div>
+
         </div>
       </div>
 
