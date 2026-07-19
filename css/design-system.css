@@ -74,11 +74,7 @@
   --shadow-xl:   0 24px 64px rgba(10,17,114,0.16);
   --shadow-amber:0 8px 32px rgba(245,166,35,0.25);
 
-  /* Hatch sub‑brand overrides (optional) */
-  --hatch-green:    #22C55E;
-  --hatch-orange:   #F97316;
-  --hatch-purple:   #8B5CF6;
-  --hatch-blue:     #3B82F6;
+
 }
 
 /* Global resets */

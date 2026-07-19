@@ -65,16 +65,6 @@
       "primary_btn": "View College Programs",
       "secondary_btn": "Book a Consultation",
       "navBrand": "Hackability · For Colleges",
-      "backLabel": "← Back to Hackability"
-    },
-    "school": {
-      "eyebrow": "For Schools · Grades 3–12",
-      "title": "Entrepreneurial Learning for<br><span style=\"color:#F5C200;\">Every School</span>",
-      "subtitle": "Hatch by Hackability partners with schools to give students in Grades 3–12 the entrepreneurial mindset, innovation skills, and future-ready capabilities they need.",
-      "primary_btn": "Explore Hatch Programs",
-      "secondary_btn": "Bring Hatch to Your School",
-      "navBrand": "Hatch · by Hackability",
-      "backLabel": "← Back to Hackability"
     }
   },
   "about": {
@@ -87,15 +77,7 @@
     "eyebrow": "Our Core Verticals",
     "title": "A Holistic Approach to Innovation",
     "cards": [
-      {
-        "icon": "ph-rocket-launch",
-        "title": "Hatch",
-        "description": "Entrepreneurial learning and innovation programs specifically designed for school students (Grades 3–12) to build early foundations.",
-        "tags": [
-          "Schools",
-          "Foundational"
-        ]
-      },
+
       {
         "icon": "ph-graduation-cap",
         "title": "Hackability Campus",

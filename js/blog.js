@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     },
     {
       id: 2,
-      title: 'Hatch: Empowering School Students',
-      excerpt: 'A deep dive into our new entrepreneurship program designed to inspire the next generation of founders before they even reach college.',
+      title: 'Building Innovation Culture in Education',
+      excerpt: 'A deep dive into how educational institutions are fostering creativity, problem-solving, and entrepreneurial thinking among students.',
       category: 'Education',
       image_url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&auto=format&fit=crop',
       author: 'Sarah Chen',
