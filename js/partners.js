@@ -32,13 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (filtered.length === 0) {
       if (category === 'Colleges') {
         filtered = [
-          {
-            title: "Anurag University",
-            description: "Anurag University is a Private University located in Venkatapur, Medchal-Malkajgiri district, Hyderabad, Telangana, India. Established in 2020, and is one of the First Private Universities in the State of Telangana.",
-            logo: "assets/images/colleges/anurag.png",
-            url: "https://www.anurag.edu.in/",
-            category: "Colleges"
-          },
+
           {
             title: "Geethanjali College of Engineering",
             description: "Geethanjali is equipped and geared up to take on the responsibility of providing exceptional quality technical education, assimilating the latest developments in an ambience committed to achieve academic excellence.",
