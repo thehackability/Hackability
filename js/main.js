@@ -3,6 +3,7 @@
 // ==========================================================================
 
 function sendRemoteLog(type, ...args) {
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') return;
   const message = args.map(arg => {
     if (typeof arg === 'object') {
       try {
