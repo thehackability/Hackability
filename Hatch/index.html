@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="background-color: #0D1B8E;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HATCH — Where Young Minds Hatch Big Ideas</title>
+  <meta name="description" content="HATCH partners with schools to provide entrepreneurship and innovation education for students in Grades 3–12." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://hatch.hackability.in" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hatch.hackability.in" />
+  <meta property="og:title" content="HATCH — Where Young Minds Hatch Big Ideas" />
+  <meta property="og:description" content="HATCH partners with schools to provide entrepreneurship and innovation education for students in Grades 3–12." />
+  <meta property="og:image" content="https://www.hackability.in/assets/images/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://hatch.hackability.in" />
+  <meta property="twitter:title" content="HATCH — Where Young Minds Hatch Big Ideas" />
+  <meta property="twitter:description" content="HATCH partners with schools to provide entrepreneurship and innovation education for students in Grades 3–12." />
+  <meta property="twitter:image" content="https://www.hackability.in/assets/images/og-image.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/design-system.css?v=13" />
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="css/logoloop.css" />
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+
+  <!-- Tailwind CDN (dev only) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:        '#0D1B8E',
+            'navy-dark': '#0A1570',
+            'navy-mid':  '#1A2FA8',
+            'navy-tint': '#E8F0FF',
+            yellow:      '#F5C200',
+            'yellow-dark':'#D4A800',
+            'yellow-tint':'#FFF8D6',
+            'grey-light': '#F4F4F6',
+            'grey-mid':   '#9CA3AF',
+            'grey-dark':  '#374151',
+            'hk-border':  '#E2E8F0',
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+            data:    ['Space Grotesk', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Hatch specific styles */
+    /* Premium Floating Sticky Nav */
+    .sticky-nav-container {
+      position: sticky;
+      top: 16px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      padding: 0 1.5rem;
+      pointer-events: none;
+    }
+    .sticky-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 9999px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      overflow-x: auto;
+      scrollbar-width: none;
+      pointer-events: auto;
+    }
+    .sticky-nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+    .sticky-nav-pill {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #374151;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: block;
+    }
+    .sticky-nav-pill:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #0D1B8E;
+    }
+    .sticky-nav-pill.active {
+      background: #e2e8f0;
+      color: #0D1B8E;
+      box-shadow: 0 2px 8px rgba(13, 27, 142, 0.08);
+    }
+    
+    /* Mobile sticky nav overrides */
+    @media (max-width: 768px) {
+      .sticky-nav-container {
+        top: 16px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .sticky-nav-menu {
+        flex-wrap: wrap;
+        border-radius: 1.5rem;
+        justify-content: center;
+      }
+      .sticky-nav-pill {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Why Hatch diagram */
+    .why-block {
+      background: rgba(232, 240, 255, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 8px 32px rgba(13, 27, 142, 0.05);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .why-block:hover {
+      transform: translateY(-4px);
+      border-color: #0D1B8E;
+      box-shadow: 0 10px 30px -10px rgba(13, 27, 142, 0.15);
+    }
+    .center-bulb {
+      width: 120px;
+      height: 120px;
+      background: #FFF8D6;
+      border: 2px solid #F5C200;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 0 30px rgba(245, 194, 0, 0.2);
+      animation: bulb-pulse 3s infinite ease-in-out;
+    }
+    @keyframes bulb-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(245, 194, 0, 0.2), 0 0 0px rgba(245, 194, 0, 0.1) inset; border-color: #F5C200; }
+      50% { box-shadow: 0 0 50px rgba(245, 194, 0, 0.6), 0 0 15px rgba(245, 194, 0, 0.3) inset; border-color: #FFDF40; }
+    }
+    
+    /* Aceternity Style Beams */
+    .animated-beam {
+      stroke-dasharray: 30 100;
+      stroke-dashoffset: 30;
+      animation: shoot-beam 4s infinite linear;
+      stroke-linecap: round;
+    }
+    @keyframes shoot-beam {
+      0% { stroke-dashoffset: 30; opacity: 0; }
+      5% { opacity: 1; }
+      95% { opacity: 1; }
+      100% { stroke-dashoffset: -100; opacity: 0; }
+    }
+
+    /* Sleek Segmented Tabs */
+    .track-tabs-container {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(12px);
+    }
+    .track-tab {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .track-tab:hover {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .track-tab.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .track-tab .grade-text {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+      margin-bottom: 0.25rem;
+      transition: all 0.3s;
+    }
+    .track-tab.active .grade-text {
+      opacity: 1;
+      color: #38bdf8; /* sky-400 */
+    }
+    .track-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .track-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }    /* Preloader Animation */
+    @keyframes preloaderFadeInDown {
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes preloaderDrawLine {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes preloaderStarPop {
+      0% { opacity: 0; transform: scale(0) rotate(-45deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    
+    /* Sparkles Logo Carousel */
+    @keyframes logoMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-logo-marquee {
+      animation: logoMarquee 30s linear infinite;
+    }
+    .animate-logo-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Ripple Background Effect */
+    @keyframes cellRipple {
+      0% { opacity: 0.4; transform: scale(1); }
+      30% { opacity: 1; transform: scale(1.1); background-color: rgba(14, 165, 233, 0.8); }
+      100% { opacity: 0.4; transform: scale(1); }
+    }
+    .animate-cell-ripple {
+      animation: cellRipple var(--duration, 0.5s) ease-out var(--delay, 0s) none;
+    }
+    body.loading {
+      overflow: hidden;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="css/card-nav.css" />
+  <!-- Schema.org JSON-LD (AEO & GEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Hatch (K-12)",
+    "url": "https://hatch.hackability.in",
+    "description": "Entrepreneurship and innovation education program tailored for students in Grades 3 to 12.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Hackability",
+      "url": "https://www.hackability.in/"
+    }
+  }
+  </script>
+</head>
+<body class="font-body bg-navy text-grey-dark flex flex-col min-h-screen" style="margin:0;padding:0;">
+
+  <!-- ===================== GLOSSY PRELOADER ===================== -->
+  <div id="page-preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-2xl transition-opacity duration-1000 ease-in-out" style="z-index: 999999;">
+    <div class="relative flex flex-col items-center justify-center gap-2 transform translate-y-[-20px] opacity-0" style="animation: preloaderFadeInDown 0.6s ease-out forwards 0.1s;">
+      <h1 class="text-5xl md:text-7xl font-display font-bold text-white text-center mb-2">Hatch</h1>
+      <svg width="300" height="20" viewBox="0 0 300 20" class="absolute -bottom-6 left-1/2 -translate-x-1/2 overflow-visible">
+        <path
+          d="M 0,10 Q 75,0 150,10 Q 225,20 300,10"
+          stroke="currentColor"
+          stroke-width="3"
+          fill="none"
+          class="text-white"
+          stroke-linecap="round"
+          style="stroke-dasharray: 310; stroke-dashoffset: 310; animation: preloaderDrawLine 1.5s ease-in-out forwards 0.4s;"
+        />
+        <g style="transform: translate(288px, -2px);" class="text-white">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" style="opacity: 0; transform-box: fill-box; transform-origin: center; animation: preloaderStarPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.8s;" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    document.body.classList.add('loading');
+    const _preloaderStart = Date.now();
+    window.addEventListener('load', () => {
+      const elapsed = Date.now() - _preloaderStart;
+      const remain = Math.max(0, 1800 - elapsed);
+      setTimeout(() => {
+        const p = document.getElementById('page-preloader');
+        if(p) {
+          p.style.opacity = '0';
+          setTimeout(() => { p.remove(); document.body.classList.remove('loading'); }, 1000);
+        }
+      }, remain);
+    });
+  </script>
+
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 pt-6">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between relative">
+      
+      <!-- Logo -->
+      <div class="flex-1 flex justify-start">
+        <a href="#" class="flex items-center" id="logo-link">
+          <img src="assets/hatch-logo-cropped.png" alt="Hackability" style="height:50px; filter: brightness(0) invert(1);" />
+        </a>
+      </div>
+
+
+      <!-- Right aligned controls: Contact (Desktop) & Hamburger (Mobile) -->
+      <div class="flex-1 flex justify-end items-center gap-4 z-50">
+        <a href="https://hackability.in/#contact" class="hidden lg:inline-flex px-8 py-3 rounded-full border border-white/20 bg-white/10 text-base font-bold text-white hover:bg-white hover:text-navy transition-colors shadow-sm">
+          Contact us
+        </a>
+        <!-- Mobile hamburger (CardNav style) -->
+        <div class="hamburger-menu text-white lg:hidden" aria-label="Open menu" tabindex="0">
+          <div class="hamburger-line bg-current"></div>
+          <div class="hamburger-line bg-current"></div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- CardNav Mobile Dropdown Content -->
+    <div class="card-nav-content lg:hidden">
+
+
+    </div>
+  </nav>
+
+
+
+<main class="flex-grow">
+  <!-- ===================== HERO SECTION ===================== -->
+  <section id="hero" class="bg-black min-h-screen flex flex-col justify-center lg:justify-end relative overflow-hidden z-20">
+    <!-- Background Carousel -->
+    <div id="hatch-hero-carousel" class="absolute inset-0 z-[0] pointer-events-none">
+      <div class="slide active absolute inset-0 opacity-100 bg-cover bg-center transition-opacity duration-[2000ms]" style="background-image: url('assets/images/hatch_hero_bg_1.jpg');"></div>
+      <div class="slide absolute inset-0 opacity-0 bg-cover bg-center transition-opacity duration-[2000ms]" style="background-image: url('assets/images/hatch_hero_bg_2.jpg');"></div>
+      <div class="slide absolute inset-0 opacity-0 bg-cover bg-center transition-opacity duration-[2000ms]" style="background-image: url('assets/images/hatch_hero_bg_3.jpg');"></div>
+      <div class="slide absolute inset-0 opacity-0 bg-cover bg-center transition-opacity duration-[2000ms]" style="background-image: url('assets/images/hatch_hero_bg_4.jpg');"></div>
+      <div class="slide absolute inset-0 opacity-0 bg-cover bg-center transition-opacity duration-[2000ms]" style="background-image: url('assets/images/hatch_hero_bg_5.jpg');"></div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const carousel = document.getElementById('hatch-hero-carousel');
+        if (carousel) {
+          const slides = carousel.querySelectorAll('.slide');
+          let current = 0;
+          if (slides.length > 1) {
+            setInterval(() => {
+              slides[current].classList.remove('opacity-100');
+              slides[current].classList.add('opacity-0');
+              current = (current + 1) % slides.length;
+              slides[current].classList.remove('opacity-0');
+              slides[current].classList.add('opacity-100');
+            }, 5000);
+          }
+        }
+      });
+    </script>
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-[1] pointer-events-none"></div>
+
+    <div class="w-full px-4 lg:px-6 pt-32 md:pt-48 pb-20 md:pb-32 flex flex-col items-start relative z-[10]">
+      <!-- Text column -->
+      <div id="hero-text" class="flex flex-col items-start text-left max-w-4xl">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 reveal reveal-delay-1">
+          <i class="ph-bold ph-lightbulb text-yellow" style="font-size:18px;"></i>
+          <span class="text-white text-sm font-bold tracking-wide uppercase">Hatch for Schools</span>
+        </div>
+        
+        <!-- H1 -->
+        <h1 id="hero-title" class="font-display font-extrabold text-white leading-tight mb-6 reveal reveal-delay-2 drop-shadow-2xl"
+            style="font-size:clamp(40px,5vw,64px); letter-spacing:-1px; text-shadow: 0 4px 20px rgba(0,0,0,0.6);">
+          Where Young Minds <br/> <span style="color:#F5C200;">Hatch Big Ideas</span>
+        </h1>
+        
+        <!-- Subtext -->
+        <p id="hero-sub" class="text-lg md:text-xl mb-4 reveal reveal-delay-3 text-white/90 drop-shadow-xl" style="max-width:700px; line-height:1.7; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+          Nurturing today's young minds to become tomorrow's innovators, problem solvers, and entrepreneurs.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===================== CONTINUOUS BACKGROUND WRAPPER ===================== -->
+  <div class="relative z-0 w-full">
+    <div class="absolute inset-0 w-full h-full -z-10 bg-white" style="background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #6633ee 100%);"></div>
+
+    <!-- ===================== STICKY NAV ===================== -->
+    <div class="sticky-nav-container" style="z-index: 99999 !important; pointer-events: auto;">
+      <ul class="sticky-nav-menu">
+        <li><a href="#what-is-hatch" class="sticky-nav-pill active">What is Hatch?</a></li>
+        <li><a href="#why-hatch" class="sticky-nav-pill">Why Hatch?</a></li>
+        <li><a href="#tracks" class="sticky-nav-pill">Tracks</a></li>
+        <li><a href="#focus-areas" class="sticky-nav-pill">Focus Areas</a></li>
+        <li><a href="#highlights" class="sticky-nav-pill">Highlights</a></li>
+      </ul>
+    </div>
+
+  <!-- ===================== WHAT IS HATCH? ===================== -->
+  <section id="what-is-hatch" class="py-16 md:py-24 bg-transparent scroll-mt-24 relative">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-display font-bold text-navy text-3xl md:text-4xl mb-6">What is HATCH?</h2>
+          <p class="text-grey-dark text-lg mb-6 leading-relaxed">
+            HATCH is a school-focused vertical under hackability. It partners with schools to provide entrepreneurship and innovation education for students in Grades 3–12. Through experiential learning, students explore ideas, solve real-world problems, build solutions, and develop entrepreneurial thinking.
+          </p>
+          <p class="text-grey-dark text-lg leading-relaxed">
+            HATCH combines creativity, innovation, technology, and hands-on application to create meaningful learning experiences beyond traditional classrooms.
+          </p>
+        </div>
+        <div class="relative group">
+          <div class="relative rounded-3xl overflow-hidden shadow-xl bg-black" style="aspect-ratio: 4/3;">
+            <video 
+              id="hatch-promo-video"
+              class="w-full h-full object-cover" 
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="assets/images/hatch_illustration.png">
+              <source src="assets/videos/bring_life_to_this_image.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            
+            <!-- Unmute Button Overlay -->
+            <button id="video-unmute-btn" class="absolute bottom-4 right-4 z-20 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 backdrop-blur-md border border-white/20 transition-all duration-300 flex items-center justify-center shadow-lg hover:scale-105" title="Toggle audio">
+              <!-- Muted Speaker Icon -->
+              <svg id="mute-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L4.5 9H1.5v6h3l4.5 3.75V3.75z"/>
+              </svg>
+              <!-- Unmuted Speaker Icon (hidden by default) -->
+              <svg id="unmute-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hatch-promo-video');
+            const unmuteBtn = document.getElementById('video-unmute-btn');
+            const muteIcon = document.getElementById('mute-icon');
+            const unmuteIcon = document.getElementById('unmute-icon');
+            
+            if (video) {
+              video.volume = 0.3; // Set default volume to 30% (softer)
+            }
+            
+            if (video && unmuteBtn) {
+              unmuteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (video.muted) {
+                  video.muted = false;
+                  muteIcon.classList.add('hidden');
+                  unmuteIcon.classList.remove('hidden');
+                } else {
+                  video.muted = true;
+                  unmuteIcon.classList.add('hidden');
+                  muteIcon.classList.remove('hidden');
+                }
+              });
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY HATCH? ===================== -->
+  <section id="why-hatch" class="py-16 md:py-24 bg-transparent scroll-mt-24 relative">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="font-display font-bold text-navy text-3xl md:text-4xl mb-4">Why Hatch?</h2>
+        <p class="text-grey-dark text-lg max-w-2xl mx-auto">Building future-ready capabilities through experiential learning.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Block 1: Entrepreneurial Thinking -->
+        <div class="group relative isolate z-0 overflow-hidden glass-panel-blue p-8 rounded-2xl hover:-translate-y-1 transition-all border border-white/60 shadow-sm flex flex-col justify-between">
+          <div class="absolute inset-0 pointer-events-none -z-10">
+            <div class="absolute -inset-[25%] -skew-y-12" style="mask-image: linear-gradient(225deg, black, transparent); -webkit-mask-image: linear-gradient(225deg, black, transparent);">
+              <svg aria-hidden="true" class="absolute inset-0 h-full w-full translate-y-2 transition-transform duration-300 ease-out group-hover:translate-y-0 fill-gray-400/30 stroke-gray-400/30" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="grid-pattern-1" width="30" height="30" patternUnits="userSpaceOnUse" x="0" y="0"><path d="M.5 30V.5H30" fill="none" stroke-dasharray="0" /></pattern></defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-pattern-1)" />
+                <svg x="0" y="0" class="overflow-visible">
+                  <rect stroke-width="0" width="29" height="29" x="211" y="31" /><rect stroke-width="0" width="29" height="29" x="241" y="91" /><rect stroke-width="0" width="29" height="29" x="271" y="151" />
+                </svg>
+              </svg>
+            </div>
+            <div class="absolute -inset-[10%] opacity-0 blur-[50px] transition-opacity duration-300 group-hover:opacity-30" style="background: conic-gradient(#F35066 0deg, #F35066 117deg, #9071F9 180deg, #5182FC 240deg, #F35066 360deg);"></div>
+          </div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-yellow-tint flex items-center justify-center text-yellow-dark text-2xl mb-6">
+              <i class="ph-bold ph-lightbulb"></i>
+            </div>
+            <h3 class="font-display font-bold text-navy text-xl mb-4">Entrepreneurial Thinking</h3>
+            <p class="text-grey-dark text-sm leading-relaxed">Develop opportunity recognition, initiative, creativity, and value-creation mindsets.</p>
+          </div>
+        </div>
+
+        <!-- Block 2: Innovation & Problem Solving -->
+        <div class="group relative isolate z-0 overflow-hidden glass-panel-blue p-8 rounded-2xl hover:-translate-y-1 transition-all border border-white/60 shadow-sm flex flex-col justify-between">
+          <div class="absolute inset-0 pointer-events-none -z-10">
+            <div class="absolute -inset-[25%] -skew-y-12" style="mask-image: linear-gradient(225deg, black, transparent); -webkit-mask-image: linear-gradient(225deg, black, transparent);">
+              <svg aria-hidden="true" class="absolute inset-0 h-full w-full translate-y-2 transition-transform duration-300 ease-out group-hover:translate-y-0 fill-gray-400/30 stroke-gray-400/30" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="grid-pattern-2" width="30" height="30" patternUnits="userSpaceOnUse" x="0" y="0"><path d="M.5 30V.5H30" fill="none" stroke-dasharray="0" /></pattern></defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-pattern-2)" />
+                <svg x="0" y="0" class="overflow-visible">
+                  <rect stroke-width="0" width="29" height="29" x="181" y="61" /><rect stroke-width="0" width="29" height="29" x="241" y="151" /><rect stroke-width="0" width="29" height="29" x="121" y="31" />
+                </svg>
+              </svg>
+            </div>
+            <div class="absolute -inset-[10%] opacity-0 blur-[50px] transition-opacity duration-300 group-hover:opacity-30" style="background: conic-gradient(#F35066 0deg, #F35066 117deg, #9071F9 180deg, #5182FC 240deg, #F35066 360deg);"></div>
+          </div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-yellow-tint flex items-center justify-center text-yellow-dark text-2xl mb-6">
+              <i class="ph-bold ph-wrench"></i>
+            </div>
+            <h3 class="font-display font-bold text-navy text-xl mb-4">Innovation & Problem Solving</h3>
+            <p class="text-grey-dark text-sm leading-relaxed">Learn structured approaches to identify challenges and develop meaningful solutions.</p>
+          </div>
+        </div>
+
+        <!-- Block 3: Real-World Application -->
+        <div class="group relative isolate z-0 overflow-hidden glass-panel-blue p-8 rounded-2xl hover:-translate-y-1 transition-all border border-white/60 shadow-sm flex flex-col justify-between">
+          <div class="absolute inset-0 pointer-events-none -z-10">
+            <div class="absolute -inset-[25%] -skew-y-12" style="mask-image: linear-gradient(225deg, black, transparent); -webkit-mask-image: linear-gradient(225deg, black, transparent);">
+              <svg aria-hidden="true" class="absolute inset-0 h-full w-full translate-y-2 transition-transform duration-300 ease-out group-hover:translate-y-0 fill-gray-400/30 stroke-gray-400/30" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="grid-pattern-3" width="30" height="30" patternUnits="userSpaceOnUse" x="0" y="0"><path d="M.5 30V.5H30" fill="none" stroke-dasharray="0" /></pattern></defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-pattern-3)" />
+                <svg x="0" y="0" class="overflow-visible">
+                  <rect stroke-width="0" width="29" height="29" x="211" y="151" /><rect stroke-width="0" width="29" height="29" x="271" y="61" /><rect stroke-width="0" width="29" height="29" x="151" y="121" />
+                </svg>
+              </svg>
+            </div>
+            <div class="absolute -inset-[10%] opacity-0 blur-[50px] transition-opacity duration-300 group-hover:opacity-30" style="background: conic-gradient(#F35066 0deg, #F35066 117deg, #9071F9 180deg, #5182FC 240deg, #F35066 360deg);"></div>
+          </div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-yellow-tint flex items-center justify-center text-yellow-dark text-2xl mb-6">
+              <i class="ph-bold ph-sketch-logo"></i>
+            </div>
+            <h3 class="font-display font-bold text-navy text-xl mb-4">Real-World Application</h3>
+            <p class="text-grey-dark text-sm leading-relaxed">Apply learning through projects, prototypes, challenges, and practical experiences.</p>
+          </div>
+        </div>
+
+        <!-- Block 4: Future-Ready Skills -->
+        <div class="group relative isolate z-0 overflow-hidden glass-panel-blue p-8 rounded-2xl hover:-translate-y-1 transition-all border border-white/60 shadow-sm flex flex-col justify-between">
+          <div class="absolute inset-0 pointer-events-none -z-10">
+            <div class="absolute -inset-[25%] -skew-y-12" style="mask-image: linear-gradient(225deg, black, transparent); -webkit-mask-image: linear-gradient(225deg, black, transparent);">
+              <svg aria-hidden="true" class="absolute inset-0 h-full w-full translate-y-2 transition-transform duration-300 ease-out group-hover:translate-y-0 fill-gray-400/30 stroke-gray-400/30" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="grid-pattern-4" width="30" height="30" patternUnits="userSpaceOnUse" x="0" y="0"><path d="M.5 30V.5H30" fill="none" stroke-dasharray="0" /></pattern></defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-pattern-4)" />
+                <svg x="0" y="0" class="overflow-visible">
+                  <rect stroke-width="0" width="29" height="29" x="181" y="121" /><rect stroke-width="0" width="29" height="29" x="241" y="31" /><rect stroke-width="0" width="29" height="29" x="121" y="151" />
+                </svg>
+              </svg>
+            </div>
+            <div class="absolute -inset-[10%] opacity-0 blur-[50px] transition-opacity duration-300 group-hover:opacity-30" style="background: conic-gradient(#F35066 0deg, #F35066 117deg, #9071F9 180deg, #5182FC 240deg, #F35066 360deg);"></div>
+          </div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-yellow-tint flex items-center justify-center text-yellow-dark text-2xl mb-6">
+              <i class="ph-bold ph-users-three"></i>
+            </div>
+            <h3 class="font-display font-bold text-navy text-xl mb-4">Future-Ready Skills</h3>
+            <p class="text-grey-dark text-sm leading-relaxed">Build collaboration, communication, leadership, and adaptability for a changing world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRACKS BY GRADE ===================== -->
+  <section id="tracks" class="py-20 scroll-mt-24 relative overflow-hidden">
+    <!-- Custom Background -->
+    <div class="absolute inset-0 z-0 h-full w-full items-center px-5 py-24" style="background: radial-gradient(125% 125% at 50% 10%, #000 40%, #6633ee 100%);"></div>
+    <div class="max-w-7xl w-[95%] mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-bold text-white text-3xl md:text-4xl mb-4">Tracks by Grade</h2>
+        <p class="text-white/80 text-lg max-w-3xl mx-auto">Tracks designed for different stages of student development.</p>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden transition-all duration-300">
+        <!-- Tabs Header -->
+        <div class="flex justify-center border-none mt-6 mb-4 relative z-20">
+          <div class="track-tabs-container flex-col md:flex-row w-full md:w-auto mx-4 md:mx-0">
+            <button class="track-tab active" data-target="track-spark">
+              <div class="grade-text">Grade 3–5</div>
+              Exploration Track
+            </button>
+            <button class="track-tab" data-target="track-solve">
+              <div class="grade-text">Grade 6–9</div>
+              Experimentation Track
+            </button>
+            <button class="track-tab" data-target="track-elevate">
+              <div class="grade-text">Grade 10–12</div>
+              Elevation Track
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Content Container -->
+        <div class="p-6 md:px-12 md:py-6 relative">
+          
+          <!-- Exploration Track -->
+          <div id="track-spark" class="track-content active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="col-span-1 md:col-span-1 bg-white/5 p-6 rounded-2xl border border-white/10 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:border-sky-400/30 transition-all duration-300 group/card">
+                <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 transition-colors group-hover/card:text-sky-400 text-lg"><i class="ph-bold ph-book-open text-sky-400 text-xl"></i> Key Learning Areas</h4>
+                <ul class="space-y-2 text-sm text-white/80 list-disc list-inside leading-relaxed">
+                  <li>Creativity & Curiosity</li>
+                  <li>Exploration & Discovery</li>
+                  <li>Communication & Teamwork</li>
+                  <li>Problem Awareness</li>
+                  <li>Design Thinking Foundations</li>
+                </ul>
+              </div>
+              <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-person-simple-run text-sky-400 text-xl"></i> What Students Will Do</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Hands-on activities</li>
+                    <li>Mini innovation challenges</li>
+                    <li>Creative projects</li>
+                    <li>Team-based learning experiences</li>
+                  </ul>
+                </div>
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-star text-sky-400 text-xl"></i> Learning Outcomes</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Increased confidence</li>
+                    <li>Creative thinking abilities</li>
+                    <li>Stronger collaboration skills</li>
+                    <li>Curiosity-driven learning mindset</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experimentation Track -->
+          <div id="track-solve" class="track-content">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="col-span-1 md:col-span-1 bg-white/5 p-6 rounded-2xl border border-white/10 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:border-sky-400/30 transition-all duration-300 group/card">
+                <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 transition-colors group-hover/card:text-sky-400 text-lg"><i class="ph-bold ph-book-open text-sky-400 text-xl"></i> Key Learning Areas</h4>
+                <ul class="space-y-2 text-sm text-white/80 list-disc list-inside leading-relaxed">
+                  <li>Problem Solving</li>
+                  <li>Innovation Frameworks</li>
+                  <li>Design Thinking</li>
+                  <li>Early Entrepreneurship</li>
+                  <li>Prototyping & Validation</li>
+                </ul>
+              </div>
+              <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-person-simple-run text-sky-400 text-xl"></i> What Students Will Do</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Explore real-world challenges</li>
+                    <li>Conduct user research</li>
+                    <li>Build prototypes</li>
+                    <li>Present solutions</li>
+                  </ul>
+                </div>
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-star text-sky-400 text-xl"></i> Learning Outcomes</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Structured problem-solving abilities</li>
+                    <li>Innovation capabilities</li>
+                    <li>Entrepreneurial thinking</li>
+                    <li>Solution-building skills</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Elevation Track -->
+          <div id="track-elevate" class="track-content">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="col-span-1 md:col-span-1 bg-white/5 p-6 rounded-2xl border border-white/10 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:border-sky-400/30 transition-all duration-300 group/card">
+                <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 transition-colors group-hover/card:text-sky-400 text-lg"><i class="ph-bold ph-book-open text-sky-400 text-xl"></i> Key Learning Areas</h4>
+                <ul class="space-y-2 text-sm text-white/80 list-disc list-inside leading-relaxed">
+                  <li>Entrepreneurship</li>
+                  <li>Leadership</li>
+                  <li>Financial Literacy</li>
+                  <li>Future Technologies</li>
+                  <li>Venture & Innovation Concepts</li>
+                </ul>
+              </div>
+              <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-person-simple-run text-sky-400 text-xl"></i> What Students Will Do</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Develop solution concepts</li>
+                    <li>Work on industry-inspired challenges</li>
+                    <li>Build business model foundations</li>
+                    <li>Present ideas and projects</li>
+                  </ul>
+                </div>
+                <div class="hover:translate-x-2 transition-transform duration-300">
+                  <h4 class="font-display font-bold text-white mb-4 flex items-center gap-2 text-lg"><i class="ph-bold ph-star text-sky-400 text-xl"></i> Learning Outcomes</h4>
+                  <ul class="space-y-2 text-sm text-white/70 list-disc list-inside leading-relaxed">
+                    <li>Entrepreneurial mindset</li>
+                    <li>Leadership capabilities</li>
+                    <li>Future-ready skills</li>
+                    <li>Confidence in applying ideas to real-world contexts</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="bg-white/5 px-8 py-4 border-t border-white/10 backdrop-blur-sm">
+          <p class="text-sm text-white/80 text-center"><i class="ph-bold ph-info text-sky-400"></i> Note: Flexible execution timelines based on program selection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOCUS AREAS ===================== -->
+  <section id="focus-areas" class="py-20 md:py-32 bg-zinc-950 scroll-mt-24 relative overflow-hidden transition-bg">
+    
+    <!-- Background Ripple Effect -->
+    <div class="absolute inset-0 h-full w-full pointer-events-auto z-0 overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden"></div>
+      <div id="ripple-bg-grid" class="absolute inset-0 z-[3] opacity-50" style="mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 40%, transparent 100%);"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="font-display font-bold text-white text-4xl md:text-6xl mb-4 tracking-tight">Focus Areas</h2>
+        <p class="text-zinc-400 text-lg md:text-2xl max-w-2xl mx-auto font-light">The core pillars integrated across all our programs.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8">
+        
+        <!-- Pillar 1 -->
+        <div class="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1 h-full">
+          <div class="h-full text-white rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#010101]/90 via-[#090909]/90 to-[#010101]/90 shadow-2xl relative backdrop-blur-2xl overflow-hidden hover:border-white/25 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all">
+            
+            <!-- Animated Background Layers -->
+            <div class="absolute inset-0 z-0 overflow-hidden rounded-[2rem] pointer-events-none">
+              <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-gradient-to-tr from-sky-400/20 to-transparent blur-3xl opacity-30 group-hover:opacity-70 transform group-hover:scale-150 transition-all duration-700 animate-pulse"></div>
+              <div class="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/10 blur-xl animate-ping" style="animation-duration: 3s;"></div>
+              <div class="absolute bottom-16 right-16 w-12 h-12 rounded-full bg-white/10 blur-lg animate-ping" style="animation-duration: 4s;"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000 ease-in-out"></div>
+            </div>
+
+            <div class="p-6 relative z-10 flex flex-col items-center h-full">
+              <!-- Icon Container -->
+              <div class="relative mb-6">
+                <div class="absolute inset-0 rounded-full border-2 border-sky-400/30 animate-ping" style="animation-duration: 2s;"></div>
+                <div class="absolute inset-0 rounded-full border border-white/20 animate-pulse"></div>
+                <div class="w-14 h-14 flex items-center justify-center rounded-full backdrop-blur-lg border border-white/20 bg-gradient-to-br from-black/80 to-zinc-900 shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 hover:shadow-sky-400/20">
+                  <div class="transform group-hover:rotate-[360deg] transition-transform duration-700">
+                    <i class="ph-bold ph-lightbulb text-white group-hover:text-sky-400 transition-colors text-2xl"></i>
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="mb-4 font-display text-xl md:text-2xl text-center font-bold bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent transform group-hover:scale-105 transition-transform duration-300">
+                Innovation & Entrepreneurship
+              </h3>
+
+              <ul class="space-y-2 text-zinc-300 text-[14px] w-full mt-2 flex-grow">
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Entrepreneurial Mindsets</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Opportunity Identification</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Design Thinking</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Problem Solving</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Innovation Frameworks</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Prototyping & Validation</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Value Creation</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Pitching & Communication</li>
+              </ul>
+
+              <!-- Bottom Decorative Line & Dots -->
+              <div class="mt-4 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full transform group-hover:w-2/3 group-hover:h-1 transition-all duration-500 opacity-50 group-hover:opacity-100"></div>
+              <div class="flex space-x-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+              </div>
+            </div>
+
+            <!-- Hover Corners -->
+            <div class="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-white/10 to-transparent rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-white/10 to-transparent rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1 h-full">
+          <div class="h-full text-white rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#010101]/90 via-[#090909]/90 to-[#010101]/90 shadow-2xl relative backdrop-blur-2xl overflow-hidden hover:border-white/25 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all">
+            
+            <!-- Animated Background Layers -->
+            <div class="absolute inset-0 z-0 overflow-hidden rounded-[2rem] pointer-events-none">
+              <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-gradient-to-tr from-sky-400/20 to-transparent blur-3xl opacity-30 group-hover:opacity-70 transform group-hover:scale-150 transition-all duration-700 animate-pulse"></div>
+              <div class="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/10 blur-xl animate-ping" style="animation-duration: 3.5s;"></div>
+              <div class="absolute bottom-16 right-16 w-12 h-12 rounded-full bg-white/10 blur-lg animate-ping" style="animation-duration: 4.5s;"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000 ease-in-out"></div>
+            </div>
+
+            <div class="p-6 relative z-10 flex flex-col items-center h-full">
+              <!-- Icon Container -->
+              <div class="relative mb-6">
+                <div class="absolute inset-0 rounded-full border-2 border-sky-400/30 animate-ping" style="animation-duration: 2s;"></div>
+                <div class="absolute inset-0 rounded-full border border-white/20 animate-pulse"></div>
+                <div class="w-14 h-14 flex items-center justify-center rounded-full backdrop-blur-lg border border-white/20 bg-gradient-to-br from-black/80 to-zinc-900 shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 hover:shadow-sky-400/20">
+                  <div class="transform group-hover:rotate-[360deg] transition-transform duration-700">
+                    <i class="ph-bold ph-cpu text-white group-hover:text-sky-400 transition-colors text-2xl"></i>
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="mb-4 font-display text-xl md:text-2xl text-center font-bold bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent transform group-hover:scale-105 transition-transform duration-300">
+                Gen AI & Emerging Tech
+              </h3>
+
+              <ul class="space-y-2 text-zinc-300 text-[14px] w-full mt-2 flex-grow">
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Generative AI Fundamentals</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> AI Tools & Applications</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Prompt Engineering Basics</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Web & App Development</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> IoT & Electronics Fundamentals</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> 3D & CAD Prototyping</li>
+              </ul>
+
+              <!-- Bottom Decorative Line & Dots -->
+              <div class="mt-4 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full transform group-hover:w-2/3 group-hover:h-1 transition-all duration-500 opacity-50 group-hover:opacity-100"></div>
+              <div class="flex space-x-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+              </div>
+            </div>
+
+            <!-- Hover Corners -->
+            <div class="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-white/10 to-transparent rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-white/10 to-transparent rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1 h-full">
+          <div class="h-full text-white rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#010101]/90 via-[#090909]/90 to-[#010101]/90 shadow-2xl relative backdrop-blur-2xl overflow-hidden hover:border-white/25 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all">
+            
+            <!-- Animated Background Layers -->
+            <div class="absolute inset-0 z-0 overflow-hidden rounded-[2rem] pointer-events-none">
+              <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-gradient-to-tr from-sky-400/20 to-transparent blur-3xl opacity-30 group-hover:opacity-70 transform group-hover:scale-150 transition-all duration-700 animate-pulse"></div>
+              <div class="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/10 blur-xl animate-ping" style="animation-duration: 2.5s;"></div>
+              <div class="absolute bottom-16 right-16 w-12 h-12 rounded-full bg-white/10 blur-lg animate-ping" style="animation-duration: 3.8s;"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000 ease-in-out"></div>
+            </div>
+
+            <div class="p-6 relative z-10 flex flex-col items-center h-full">
+              <!-- Icon Container -->
+              <div class="relative mb-6">
+                <div class="absolute inset-0 rounded-full border-2 border-sky-400/30 animate-ping" style="animation-duration: 2s;"></div>
+                <div class="absolute inset-0 rounded-full border border-white/20 animate-pulse"></div>
+                <div class="w-14 h-14 flex items-center justify-center rounded-full backdrop-blur-lg border border-white/20 bg-gradient-to-br from-black/80 to-zinc-900 shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 hover:shadow-sky-400/20">
+                  <div class="transform group-hover:rotate-[360deg] transition-transform duration-700">
+                    <i class="ph-bold ph-users text-white group-hover:text-sky-400 transition-colors text-2xl"></i>
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="mb-4 font-display text-xl md:text-2xl text-center font-bold bg-gradient-to-r from-white via-zinc-200 to-white bg-clip-text text-transparent transform group-hover:scale-105 transition-transform duration-300">
+                21st Century Skills
+              </h3>
+
+              <ul class="space-y-2 text-zinc-300 text-[14px] w-full mt-2 flex-grow">
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Critical Thinking</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Creativity</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Collaboration</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Communication</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Leadership</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Adaptability</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Decision Making</li>
+                <li class="flex items-center gap-3 transform group-hover:text-white transition-colors duration-300"><i class="ph-bold ph-check text-sky-400 text-base"></i> Presentation Skills</li>
+              </ul>
+
+              <!-- Bottom Decorative Line & Dots -->
+              <div class="mt-4 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full transform group-hover:w-2/3 group-hover:h-1 transition-all duration-500 opacity-50 group-hover:opacity-100"></div>
+              <div class="flex space-x-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+              </div>
+            </div>
+
+            <!-- Hover Corners -->
+            <div class="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-white/10 to-transparent rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-white/10 to-transparent rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HIGHLIGHTS ===================== -->
+  <section id="highlights" class="pt-0 pb-16 md:pb-24 bg-white scroll-mt-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Logos Section (Sparkles Carousel) -->
+      <div class="mb-12 w-screen relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] bg-slate-50 py-12 overflow-hidden flex flex-col items-center">
+        <div class="max-w-7xl mx-auto px-6 relative z-20 w-full">
+          <h2 class="mb-12 text-center font-display font-medium text-xl text-grey-dark tracking-tight md:text-3xl">
+            Trusted by Leading <span class="font-semibold text-purple-600">Institutions</span>
+          </h2>
+
+          <div class="relative flex flex-col border-x border-gray-200">
+            <div class="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t border-gray-200"></div>
+
+            <!-- Top Row (3 items) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 border-b border-gray-200 bg-slate-50">
+              <!-- Item 1 (Kiran) -->
+              <div class="relative border-b md:border-b-0 md:border-r border-gray-200 flex items-center justify-center p-4 md:p-6 bg-slate-50">
+                <img src="assets/images/hatch_skls_logo_2.png" alt="Kiran Logo" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+                <svg class="-right-[12.5px] -bottom-[12.5px] absolute z-10 hidden md:block size-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </div>
+              <!-- Item 2 (Sanskrit) -->
+              <div class="relative border-b md:border-b-0 md:border-r border-gray-200 bg-white flex items-center justify-center p-4 md:p-6">
+                <img src="assets/images/hatch_skls_logo_3.png" alt="Sanskrit Logo" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+                <svg class="-right-[12.5px] -bottom-[12.5px] absolute z-10 hidden md:block size-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </div>
+              <!-- Item 3 (Logo 4) -->
+              <div class="relative flex items-center justify-center p-4 md:p-6 bg-slate-50">
+                <img src="assets/images/hatch_skls_logo_4.png" alt="Partner Logo 4" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+              </div>
+            </div>
+
+            <!-- Bottom Row (3 items) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 bg-white">
+              <!-- Item 4 (Logo 5) -->
+              <div class="relative border-b md:border-b-0 md:border-r border-gray-200 flex items-center justify-center p-4 md:p-6 bg-white">
+                <img src="assets/images/hatch_skls_logo_5.png" alt="Partner Logo 5" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+                <svg class="-right-[12.5px] -bottom-[12.5px] absolute z-10 hidden md:block size-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </div>
+              <!-- Item 5 (Logo 6) -->
+              <div class="relative border-b md:border-b-0 md:border-r border-gray-200 flex items-center justify-center p-4 md:p-6 bg-slate-50">
+                <img src="assets/images/hatch_skls_logo_6.png" alt="Partner Logo 6" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+                <svg class="-right-[12.5px] -bottom-[12.5px] absolute z-10 hidden md:block size-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </div>
+              <!-- Item 6 (Logo 7) -->
+              <div class="relative flex items-center justify-center p-4 md:p-6 bg-white">
+                <img src="assets/images/hatch_skls_logo_7.png" alt="Partner Logo 7" class="pointer-events-none w-[90%] h-auto max-h-28 md:max-h-40 select-none object-contain" />
+              </div>
+            </div>
+
+            <div class="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b border-gray-200"></div>
+          </div>
+        </div>
+
+
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-6 mt-24"> <!-- Re-open max-w-7xl -->
+
+      <!-- Impact Video Reel -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="font-display font-bold text-navy text-3xl md:text-4xl mb-6">A Glimpse of Our Impact</h2>
+          <p class="text-grey-dark text-lg mb-8 leading-relaxed">
+            See our students in action. From brainstorming initial concepts to presenting fully working prototypes, our programs transform classrooms into innovation hubs.
+          </p>
+          <a href="/#contact" class="btn-flow btn-flow-navy mt-4">
+            <i class="ph-bold ph-arrow-right flow-arrow-left"></i>
+            <span class="flow-text">Bring Hatch to your school</span>
+            <span class="flow-circle"></span>
+            <i class="ph-bold ph-arrow-right flow-arrow-right"></i>
+          </a>
+        </div>
+        
+        <div class="flex justify-center">
+          <!-- 9:16 Vertical Video Container -->
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-navy w-full max-w-sm group" style="aspect-ratio: 9/16; background: #000;">
+            <video 
+              id="hatch-impact-video"
+              class="absolute inset-0 w-full h-full object-cover" 
+              poster="assets/images/video_placeholder.png" 
+              autoplay
+              loop
+              muted 
+              playsinline
+            >
+              <!-- Dummy video source, can be replaced -->
+              <source src="assets/videos/my_impact_video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            
+            <!-- Unmute Button Overlay (Moved to top-right to prevent overlap with info card) -->
+            <button id="impact-video-unmute-btn" class="absolute top-4 right-4 z-20 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 backdrop-blur-md border border-white/20 transition-all duration-300 flex items-center justify-center shadow-lg hover:scale-105" title="Toggle audio">
+              <!-- Muted Speaker Icon -->
+              <svg id="impact-mute-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L4.5 9H1.5v6h3l4.5 3.75V3.75z"/>
+              </svg>
+              <!-- Unmuted Speaker Icon (hidden by default) -->
+              <svg id="impact-unmute-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/>
+              </svg>
+            </button>
+
+            <!-- Info Card Overlay (Always Visible) -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/95 via-black/70 to-transparent z-10 pointer-events-none">
+              <span class="text-yellow font-display text-xs font-semibold tracking-wider uppercase mb-1 block">Student Showcase</span>
+              <h3 class="text-white font-display font-bold text-lg mb-2">Kiran International School, Boduppal</h3>
+              <p class="text-white/80 text-sm leading-relaxed">
+                Watch students collaborate to brainstorm, build prototypes, and pitch creative solutions to real-world challenges.
+              </p>
+            </div>
+          </div>
+        </div>      </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hatch-impact-video');
+            const unmuteBtn = document.getElementById('impact-video-unmute-btn');
+            const muteIcon = document.getElementById('impact-mute-icon');
+            const unmuteIcon = document.getElementById('impact-unmute-icon');
+            
+            let userToggledAudio = false;
+
+            if (video) {
+              video.volume = 0.3; // Set default volume to 30% (softer)
+            }
+            
+            if (video && unmuteBtn) {
+              unmuteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                userToggledAudio = true; // Track that user took manual control
+                if (video.muted) {
+                  video.muted = false;
+                  muteIcon.classList.add('hidden');
+                  unmuteIcon.classList.remove('hidden');
+                } else {
+                  video.muted = true;
+                  unmuteIcon.classList.add('hidden');
+                  muteIcon.classList.remove('hidden');
+                }
+              });
+            }
+
+            // Auto-play audio when scrolling to the video
+            if (video) {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (userToggledAudio) return; // Don't override user's manual choice
+
+                  if (entry.isIntersecting) {
+                    video.muted = false;
+                    let playPromise = video.play();
+                    if (playPromise !== undefined) {
+                      playPromise.then(_ => {
+                        // Autoplay with audio succeeded!
+                        muteIcon.classList.add('hidden');
+                        unmuteIcon.classList.remove('hidden');
+                      }).catch(error => {
+                        // Browser prevented audio autoplay, fallback to muted
+                        video.muted = true;
+                        video.play();
+                      });
+                    }
+                  } else {
+                    // Mute it again when it leaves the viewport
+                    video.muted = true;
+                    unmuteIcon.classList.add('hidden');
+                    muteIcon.classList.remove('hidden');
+                  }
+                });
+              }, { threshold: 0.5 }); // Trigger when 50% visible
+
+              observer.observe(video);
+            }
+          });
+        </script>
+      </div>
+
+    </div>
+  </div> <!-- End max-w-7xl -->
+</section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section id="contact" class="py-16 md:py-24 bg-white border-t border-hk-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Left: Text -->
+        <div class="reveal">
+          <h2 class="font-display font-bold text-navy mb-6 typewriter-effect" data-typewriter="Let's Nurture Young Innovators Together" style="font-size:clamp(40px, 5vw, 48px); line-height:1.1; min-height: 2.2em;">
+            &nbsp;
+          </h2>
+          <p class="text-lg text-grey-dark mb-10" style="line-height:1.7;">
+            Partner with us to bring hands-on entrepreneurship and 21st-century skills to your school.
+          </p>
+          <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-navy-tint flex items-center justify-center text-navy">
+                <i class="ph-bold ph-envelope-simple" style="font-size:20px;"></i>
+              </div>
+              <div>
+                <div class="text-sm text-grey-mid font-medium">Email Us</div>
+                <div class="font-bold text-navy">thehackability@gmail.com</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-navy-tint flex items-center justify-center text-navy">
+                <i class="ph-bold ph-phone" style="font-size:20px;"></i>
+              </div>
+              <div>
+                <div class="text-sm text-grey-mid font-medium">Call Us</div>
+                <div class="font-bold text-navy">+91 79936 62605</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="bg-grey-light p-8 md:p-10 rounded-3xl border border-hk-border reveal reveal-delay-2">
+          <form id="contact-form" class="flex flex-col gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-navy mb-2">Full Name</label>
+                <input type="text" class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" placeholder="John Doe" required />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-navy mb-2">Organization</label>
+                <input type="text" class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" placeholder="Your School/Institution" required />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-navy mb-2">Designation</label>
+                <input type="text" class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" placeholder="Principal / Educator" required />
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-navy mb-2">Email Address</label>
+                <input type="email" class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-navy mb-2">Phone Number</label>
+              <input type="tel" class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-navy mb-2">Message</label>
+              <textarea class="w-full px-4 py-3 rounded-lg border border-hk-border bg-white focus:outline-none focus:border-navy transition-colors" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
+            <div class="flex gap-4 mt-2">
+              <button type="submit" class="btn-flow btn-flow-navy w-full">
+                <i class="ph-bold ph-arrow-right flow-arrow-left"></i>
+                <span class="flow-text">Get in Touch</span>
+                <span class="flow-circle"></span>
+                <i class="ph-bold ph-arrow-right flow-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  </div> <!-- End Continuous Background Wrapper -->
+
+
+
+
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-navy border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <!-- Brand column -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <img src="assets/hatch-logo-cropped.png" alt="Hackability" style="height:50px;" />
+          </div>
+          <p class="text-sm mb-6" style="color:rgba(255,255,255,0.5);line-height:1.7;">
+            Building innovation-driven talent at scale through strategic partnerships and ecosystem-driven initiatives.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-white hover:bg-white hover:text-navy transition-colors">
+              <i class="ph-bold ph-linkedin-logo" style="font-size:18px;"></i>
+            </a>
+            <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-white hover:bg-white hover:text-navy transition-colors">
+              <i class="ph-bold ph-twitter-logo" style="font-size:18px;"></i>
+            </a>
+          </div>
+        </div>
+
+
+        <!-- Links column 2: Focus Domains -->
+        <div>
+          <h4 class="font-display font-semibold text-white mb-6">Focus Domains</h4>
+          <ul class="flex flex-col gap-3 list-none p-0 m-0">
+            <li><span class="text-sm text-white/60">Innovation</span></li>
+            <li><span class="text-sm text-white/60">Entrepreneurship</span></li>
+            <li><span class="text-sm text-white/60">Emerging Technologies</span></li>
+          </ul>
+        </div>
+
+        <!-- Contact column -->
+        <div>
+          <h4 class="font-display font-semibold text-white mb-6">Contact</h4>
+          <ul class="flex flex-col gap-3 list-none p-0 m-0">
+            <li><a href="mailto:thehackability@gmail.com" class="text-sm text-white/60 hover:text-white no-underline transition-colors flex items-center gap-2">
+              <i class="ph-bold ph-envelope-simple"></i> thehackability@gmail.com
+            </a></li>
+            <li><a href="tel:+917993662605" class="text-sm text-white/60 hover:text-white no-underline transition-colors flex items-center gap-2">
+              <i class="ph-bold ph-phone"></i> +91 79936 62605
+            </a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-white/40 m-0">
+          -Â¬ Hackability. All Rights Reserved.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="https://hackability.in/admin/" class="text-xs text-yellow/80 hover:text-yellow no-underline transition-colors flex items-center gap-1 font-medium">
+            <i class="ph-bold ph-lock-key"></i> Super Admin
+          </a>
+          <div class="w-px h-3 bg-white/20"></div>
+          <a href="#" class="text-xs text-white/40 hover:text-white no-underline transition-colors">Privacy Policy</a>
+          <a href="#" class="text-xs text-white/40 hover:text-white no-underline transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase Config -->
+  <script src="js/supabase-config.js"></script>
+
+  <script src="js/animations.js?v=11"></script>
+  <script src="js/main.js?v=17"></script>
+  <script src="js/hatch.js?v=11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.1.0/tsparticles.engine.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3.1.0/tsparticles.slim.min.js"></script>
+  <script src="js/sparkles.js"></script>
+  <script src="js/ripple.js"></script>
+  <script src="js/card-nav.js" defer></script>
+</body>
+</html>
+
